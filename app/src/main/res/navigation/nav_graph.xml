@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/moviesListFragment">
+
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.wmariusz.moviesdb.presentation.movieslist.MoviesListFragment"
+        android:label="MoviesListFragment"
+        tools:layout="@layout/fragment_movie_list">
+        <action
+            android:id="@+id/fromListToDetail"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.wmariusz.moviesdb.presentation.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+        <action
+            android:id="@+id/fromDetailToCast"
+            app:destination="@id/movieCastFragment" />
+        <deepLink app:uri="www.themoviedb.org/movie/{movieId}-{rest}" />
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieCastFragment"
+        android:name="com.wmariusz.moviesdb.presentation.cast.CastFragment"
+        android:label="CastFragment"
+        tools:layout="@layout/fragment_cast">
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvSeriesFragment"
+        android:name="com.wmariusz.moviesdb.presentation.tvserieslist.TvSeriesListFragment"
+        android:label="TvSeriesListFragment"
+        tools:layout="@layout/fragment_tv_list">
+        <action
+            android:id="@+id/showTvDetaildFromList"
+            app:destination="@id/tvSeriesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvSeriesDetailFragment"
+        android:name="com.wmariusz.moviesdb.presentation.tvseriesdetail.TvSeriesDetailFragment"
+        android:label="TvSeriesDetailFragment"
+        tools:layout="@layout/fragment_tv_series_detail">
+        <argument
+            android:name="tvShowId"
+            app:argType="string" />
+    </fragment>
+</navigation>
